@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  PLAYGROUND — treina HTML, CSS e JavaScript
+  ============================================================
+  COMO USAR:
+  1. Abre este ficheiro com o Live Server (botão direito -> "Open with Live Server").
+  2. Procura os comentários marcados com  <<< EXPERIMENTA  e muda o valor.
+  3. Grava (Cmd+S) e vê o browser mudar sozinho.
+  4. Muda UMA coisa de cada vez. Se partir, sabes logo o que foi.
+
+  As 3 camadas de uma página = uma casa:
+    HTML  = a estrutura (paredes e divisões)   -> está no <body>, mais abaixo
+    CSS   = a decoração (cores, tamanhos)        -> está no <style>, aqui em cima
+    JS    = a eletricidade (o que acontece ao carregar) -> está no <script>, no fim
+  ============================================================
+-->
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playground — Programação Web</title>
+
+  <!-- ===================== CSS (a decoração) ===================== -->
+  <style>
+    /* As "variáveis" guardam valores reutilizados. Muda aqui e muda tudo de uma vez. */
+    :root {
+      --cor-principal: #1f6feb;   /* <<< EXPERIMENTA: mete #e3581f (laranja) e grava */
+      --raio: 12px;               /* <<< EXPERIMENTA: 0 = cantos retos, 30 = muito redondo */
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 0 16px;
+      background: #f6f8fa;        /* <<< EXPERIMENTA: muda a cor de fundo */
+      color: #1a1a1a;
+    }
+
+    h1 { color: var(--cor-principal); }
+
+    .cartao {
+      background: white;
+      border: 1px solid #d0d7de;
+      border-radius: var(--raio);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: var(--cor-principal);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.85; }   /* o aspeto quando passas o rato por cima */
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      width: 60%;
+    }
+  </style>
+</head>
+
+<!-- ===================== HTML (a estrutura) ===================== -->
+<body>
+
+  <h1>O meu playground</h1>
+  <p>Mexe nos ficheiros e vê o que acontece. <!-- <<< EXPERIMENTA: muda este texto --></p>
+
+  <!-- DEMO 1: um botão que corre JavaScript ao ser carregado -->
+  <div class="cartao">
+    <h2>1. Botão (JavaScript)</h2>
+    <p id="contador">Carreguei 0 vezes.</p>
+    <button onclick="contar()">Carrega em mim</button>
+  </div>
+
+  <!-- DEMO 2: ler aquilo que o utilizador escreve (base dos formulários) -->
+  <div class="cartao">
+    <h2>2. Input (dados do utilizador)</h2>
+    <input id="nome" type="text" placeholder="Escreve o teu nome">
+    <button onclick="cumprimentar()">Dizer olá</button>
+    <p id="saudacao"></p>
+  </div>
+
+  <!-- DEMO 3: uma lista. Em HTML, ul = lista, li = cada item -->
+  <div class="cartao">
+    <h2>3. Lista (HTML)</h2>
+    <ul>
+      <li>HTML dá a estrutura</li>
+      <li>CSS dá o aspeto</li>
+      <li>JavaScript dá a ação</li>
+      <!-- <<< EXPERIMENTA: copia uma linha <li>...</li> e cria um item novo -->
+    </ul>
+  </div>
+
+  <!-- ===================== JavaScript (a ação) ===================== -->
+  <script>
+    // Uma "variável" guarda um valor que pode mudar.
+    let cliques = 0;
+
+    // Uma "função" é um conjunto de instruções com nome, que corre quando a chamas.
+    function contar() {
+      cliques = cliques + 1;
+      // document.getElementById(...) vai buscar um elemento do HTML pelo seu id.
+      document.getElementById("contador").textContent = "Carreguei " + cliques + " vezes.";
+
+      // console.log escreve na CONSOLA do browser (abre com F12 -> Console).
+      // É assim que "espreitas" o que o teu código está a fazer.
+      console.log("Número de cliques:", cliques);
+    }
+
+    function cumprimentar() {
+      // Lê o que foi escrito no input:
+      let nome = document.getElementById("nome").value;
+      document.getElementById("saudacao").textContent = "Olá, " + nome + "!";
+    }
+  </script>
+
+</body>
+</html>
